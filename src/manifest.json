@@ -11,7 +11,7 @@
 
     "content_scripts": [
       {
-        "matches": ["*://*/UBW/*"],
+        "matches": ["*://*/*"],
         "js": ["jquery.js", "uiWidth.js"],
         "run_at": "document_start"
       }
