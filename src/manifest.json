@@ -12,8 +12,7 @@
     "content_scripts": [
       {
         "matches": ["*://*/*"],
-        "js": ["jquery.js", "uiWidth.js"],
-        "run_at": "document_start"
+        "js": ["jquery.js", "uiWidth.js"]
       }
     ]
   }
