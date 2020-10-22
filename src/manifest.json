@@ -1,18 +1,21 @@
 {
-    "manifest_version": 2,
-    "name": "Unit4 Business World On! - UI Fixer",
-    "version": "1.1",
-
-    "description": "Implements quality of life improvements for the Unit4 Business World On! ERP system.",
-
-    "icons": {
-        "48": "icons/schedule_x48.png"
-      },
-
-    "content_scripts": [
-      {
-        "matches": ["*://*/*"],
-        "js": ["jquery.js", "uiWidth.js"]
-      }
-    ]
-  }
+  "manifest_version": 2,
+  "name": "Unit4 Business World On! - UI Fixer",
+  "version": "1.1",
+  "description": "Implements quality of life improvements for the Unit4 Business World On! ERP system.",
+  "icons": {
+    "48": "icons/schedule_x48.png"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "run_at": "document_end",
+      "matches": [
+        "*://*/UBW/*"
+      ],
+      "js": [
+        "injectStyle.js"
+      ]
+    }
+  ]
+}
