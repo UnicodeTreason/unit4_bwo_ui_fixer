@@ -8,31 +8,22 @@ const contentContainerCSS = `
 }
 `;
 
+console.log("🤫 adding Unit4UIFixer listenerz");
 document.addEventListener('DOMContentLoaded', loadEvent);
 
 function loadEvent(event) {
     const documentUrl = document.URL;
+    const eventFileName = getUrlFileName(documentUrl);
     const eventType = event.type;
 
-    const eventFileName = getUrlFileName(documentUrl);
-
-    console.info("😎 loadEvent", eventType, eventFileName);
-
-    // check we are on the correct page to inject css
-    if (eventFileName.startsWith("ContentContainer.aspx")) {
-        console.warn("on the ContentContainer!");
+    if (eventFileName.startsWith("ContentContainer.aspx") || eventFileName.startsWith("CopyContainer.aspx")) {
+        console.info("😎 injecting Unit4UIFixer CSS on", eventFileName, eventType);
         injectStyle(contentContainerCSS);
     }
-
-    if (eventFileName.startsWith("CopyContainer.aspx")) {
-        console.warn("on the CopyContainer!");
-        injectStyle(contentContainerCSS);
-    }
-
 }
 
 function injectStyle(styleData) {
-    console.log("injectStyle");
+    console.log("🚀 Unit4UIFixer injectStyle");
 
     // add the css to the new style tag, as a text node
     const style = document.createElement('style');
