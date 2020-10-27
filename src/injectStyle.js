@@ -1,10 +1,10 @@
 
 const contentContainerCSS = `
 .MainTable {
-    width: 100%;
+    width: 100% !important;
 }
 #b_s89_g89s90 {
-    table-layout: auto;
+    table-layout: auto !important;
 }
 `;
 
