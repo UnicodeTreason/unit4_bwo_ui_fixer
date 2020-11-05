@@ -37,3 +37,22 @@ function injectStyle(styleData) {
 function getUrlFileName(url) {
     return url.replace(/\?.*$/, '').split('/').pop();
 }
+
+function onError(error) {
+    console.log(`Error: ${error}`);
+}
+
+function onGot(item) {
+    let color = "DEFAULTURL2";
+    if (item.color) {
+        color = item.color;
+    }
+    var settingsURL = color;
+    console.log(`SettingsURL: ${color}`);
+    console.log(`URL: ${document.URL}`);
+    var res = /UBW/.test(document.URL);
+    console.log(`res: ${res}`);
+}
+
+let getting = browser.storage.local.get("color");
+getting.then(onGot, onError);

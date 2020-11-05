@@ -17,5 +17,9 @@
         "content.js"
       ]
     }
-  ]
+  ],
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": ["storage"]
 }
