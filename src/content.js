@@ -1,4 +1,3 @@
-
 const contentContainerCSS = `
 .MainTable {
     width: 100% !important;
