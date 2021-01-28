@@ -1,4 +1,3 @@
-
 const contentContainerCSS = `
 .MainTable {
     width: 100% !important;
@@ -8,7 +7,7 @@ const contentContainerCSS = `
 }
 `;
 
-console.log("🤫 adding Unit4UIFixer listenerz");
+console.log(`Add DOMContentLoaded EventListener`);
 document.addEventListener('DOMContentLoaded', loadEvent);
 
 function loadEvent(event) {
@@ -17,15 +16,17 @@ function loadEvent(event) {
     const eventType = event.type;
 
     if (eventFileName.startsWith("ContentContainer.aspx") || eventFileName.startsWith("CopyContainer.aspx")) {
-        console.info("😎 injecting Unit4UIFixer CSS on", eventFileName, eventType);
-        injectStyle(contentContainerCSS);
+        if (correctURL){
+            console.log(`Configured URL and current URL match, injecting CSS`);
+            injectStyle(contentContainerCSS);
+        }
     }
 }
 
 function injectStyle(styleData) {
-    console.log("🚀 Unit4UIFixer injectStyle");
+    console.log(`Injecting custom CSS`);
 
-    // add the css to the new style tag, as a text node
+    // Add the css to the new style tag, as a text node
     const style = document.createElement('style');
     style.id = 'unit4_style';
     style.type = 'text/css';
@@ -38,3 +39,18 @@ function injectStyle(styleData) {
 function getUrlFileName(url) {
     return url.replace(/\?.*$/, '').split('/').pop();
 }
+
+function onError(error) {
+    console.log(`Error: ${error}`);
+}
+
+function onGot(item) {
+    let UBWUrl = "UBW";
+    if (item.UBWUrl) {
+        UBWUrl = item.UBWUrl;
+    }
+    correctURL = (document.URL).includes(UBWUrl);
+}
+
+let getting = browser.storage.local.get("UBWUrl");
+getting.then(onGot, onError);
