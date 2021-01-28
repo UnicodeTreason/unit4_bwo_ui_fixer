@@ -1,20 +1,20 @@
 function saveOptions(e) {
     e.preventDefault();
     browser.storage.local.set({
-      color: document.querySelector("#color").value
+        UBWUrl: document.querySelector("#UBWUrl").value
     });
 }
 
 function restoreOptions() {
     function setCurrentChoice(result) {
-        document.querySelector("#color").value = result.color || "DEFAULTURL";
+        document.querySelector("#UBWUrl").value = result.UBWUrl || "UBW";
     }
 
     function onError(error) {
         console.log(`Error: ${error}`);
     }
 
-    let getting = browser.storage.local.get("color");
+    let getting = browser.storage.local.get("UBWUrl");
     getting.then(setCurrentChoice, onError);
 }
 
